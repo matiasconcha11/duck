@@ -23,8 +23,8 @@ jobs:
       - name: Package
         run: |
           cd build/Duck_artefacts/Release
-          ditto -c -k --keepParent AU/Duck.component "$GITHUB_WORKSPACE/Duck-${GITHUB_REF_NAME}-macOS-AU.zip"
-          ditto -c -k --keepParent VST3/Duck.vst3 "$GITHUB_WORKSPACE/Duck-${GITHUB_REF_NAME}-macOS-VST3.zip"
+          ditto -c -k --keepParent AU/Duck.component "$GITHUB_WORKSPACE/Duck-macOS-AU.zip"
+          ditto -c -k --keepParent VST3/Duck.vst3 "$GITHUB_WORKSPACE/Duck-macOS-VST3.zip"
       - uses: actions/upload-artifact@v4
         with:
           name: macos
@@ -40,7 +40,7 @@ jobs:
           cmake --build build --config Release --parallel
       - name: Package
         shell: pwsh
-        run: Compress-Archive -Path build/Duck_artefacts/Release/VST3/Duck.vst3 -DestinationPath "Duck-$env:GITHUB_REF_NAME-Windows-VST3.zip"
+        run: Compress-Archive -Path build/Duck_artefacts/Release/VST3/Duck.vst3 -DestinationPath "Duck-Windows-VST3.zip"
       - uses: actions/upload-artifact@v4
         with:
           name: windows
