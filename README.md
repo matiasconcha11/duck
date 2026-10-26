@@ -21,7 +21,24 @@ AU · VST3 · Standalone — macOS (Windows VST3 builds in CI) — built with [J
 
 ## Install
 
-There are no signed downloads yet, so for now Duck is built from source (it takes a few minutes):
+### Download
+
+Get the latest zip for your system from [Releases](https://github.com/matiasconcha11/duck/releases/latest).
+
+**macOS** — unzip and move the plugin into place:
+- AU (Logic, GarageBand): `Duck.component` → `~/Library/Audio/Plug-Ins/Components/`
+- VST3 (Ableton, Reaper, etc.): `Duck.vst3` → `~/Library/Audio/Plug-Ins/VST3/`
+
+The builds aren't notarized by Apple yet, so macOS blocks them at first. Clear the download flag in Terminal:
+```
+xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/Components/Duck.component ~/Library/Audio/Plug-Ins/VST3/Duck.vst3
+```
+Then restart your DAW and look for **Matias Concha → Duck**.
+
+**Windows** — unzip and move `Duck.vst3` into `C:\Program Files\Common Files\VST3\`. (The Windows build is
+compiled and unit-tested automatically but hasn't been tried in a DAW yet.)
+
+### Build from source
 
 1. Install Xcode (or its Command Line Tools) and the build tools:
    ```
@@ -68,3 +85,9 @@ Duck is new: it passes pluginval and Apple's auval, and real-world testing in Lo
 
 For curve drawing and more effects (pan, width, filter, drive, crush, time), see
 **[Contour](https://github.com/matiasconcha11/contour)**.
+
+## License
+
+Duck is free software under the [GNU Affero General Public License v3.0](LICENSE): you can use, study, change and
+share it, as long as anything you distribute that's built on it is released under the same license.
+It's built on [JUCE](https://juce.com), which is used here under the same AGPLv3 terms.
