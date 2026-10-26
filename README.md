@@ -3,7 +3,7 @@
 **One-knob sidechain ducking.** Pick a shape, turn up the amount, done. Duck pumps your bass, pads or
 buses in time with the beat, or ducks them from the actual kick through the sidechain input.
 
-AU · VST3 · Standalone — macOS (Windows VST3 builds in CI) — built with [JUCE](https://juce.com)
+AU · VST3 · Standalone — macOS (Windows VST3 builds in CI) — by [Rhizr](https://rhizr.dev/music), built with [JUCE](https://juce.com)
 
 ![Duck](docs/screenshot.png)
 
@@ -33,7 +33,7 @@ The builds aren't notarized by Apple yet, so macOS blocks them at first. Clear t
 ```
 xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/Components/Duck.component ~/Library/Audio/Plug-Ins/VST3/Duck.vst3
 ```
-Then restart your DAW and look for **Matias Concha → Duck**.
+Then restart your DAW and look for **Rhizr → Duck**.
 
 **Windows** — unzip and move `Duck.vst3` into `C:\Program Files\Common Files\VST3\`. (The Windows build is
 compiled and unit-tested automatically but hasn't been tried in a DAW yet.)
@@ -53,7 +53,7 @@ compiled and unit-tested automatically but hasn't been tried in a DAW yet.)
    ```
 
 The build installs the plugin into `~/Library/Audio/Plug-Ins/` (AU in `Components`, VST3 in `VST3`).
-Restart your DAW and look for **Matias Concha → Duck**.
+Restart your DAW and look for **Rhizr → Duck**.
 
 ## Ducking from the kick in Logic Pro
 
@@ -83,8 +83,7 @@ universal macOS and Windows bundles and attaches them to a draft GitHub release 
 Duck is new: it passes pluginval and Apple's auval, and real-world testing in Logic Pro is under way. Bug reports and ideas are welcome in
 [Issues](https://github.com/matiasconcha11/duck/issues).
 
-For curve drawing and more effects (pan, width, filter, drive, crush, time), see
-**[Contour](https://github.com/matiasconcha11/contour)**.
+More from [Rhizr](https://rhizr.dev/music): **[Contour](https://github.com/matiasconcha11/contour)** (curve shaper) and **[Fracture](https://github.com/matiasconcha11/fracture)** (glitch sequencer).
 
 ## License
 
