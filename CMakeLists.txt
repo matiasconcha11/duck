@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.22)
 # -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" for a universal binary.
 set(CMAKE_OSX_DEPLOYMENT_TARGET "11.0" CACHE STRING "Minimum macOS version")
 
-project(Duck VERSION 0.1.1)
+project(Duck VERSION 0.1.2)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
