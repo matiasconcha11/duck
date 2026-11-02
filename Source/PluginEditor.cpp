@@ -223,14 +223,18 @@ void DuckEditor::paint (juce::Graphics& g)
     g.setColour (Theme::outline);
     g.drawHorizontalLine (headerHeight - 1, 0.0f, (float) getWidth());
 
-    // Logo: a duck curve.
-    const auto mark = juce::Rectangle<float> ((float) margin, 15.0f, 24.0f, 22.0f);
+    const auto mark = juce::Rectangle<float> ((float) margin, 14.0f, 26.0f, 26.0f);
     juce::Path logo;
-    logo.startNewSubPath (mark.getX(), mark.getY());
-    logo.lineTo (mark.getX(), mark.getBottom());
-    logo.quadraticTo (mark.getX() + 4.0f, mark.getY(), mark.getRight(), mark.getY());
-    g.setColour (accent);
-    g.strokePath (logo, juce::PathStrokeType (2.5f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
+    logo.startNewSubPath (15.0f, 17.0f);
+    logo.lineTo (15.0f, 30.0f);
+    logo.cubicTo (15.0f, 39.0f, 22.0f, 46.0f, 32.0f, 46.0f);
+    logo.cubicTo (42.0f, 46.0f, 49.0f, 39.0f, 49.0f, 30.0f);
+    logo.lineTo (49.0f, 17.0f);
+    logo.startNewSubPath (32.0f, 46.0f);
+    logo.lineTo (32.0f, 54.0f);
+    logo.applyTransform (juce::AffineTransform::scale (mark.getWidth() / 64.0f, mark.getHeight() / 64.0f).translated (mark.getX(), mark.getY()));
+    g.setColour (juce::Colour (0xfff0b89a));
+    g.strokePath (logo, juce::PathStrokeType (2.1f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
 
     auto title = header.withTrimmedLeft (margin + 34);
     g.setColour (Theme::text);
