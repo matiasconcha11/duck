@@ -6,6 +6,21 @@
 
 using Catch::Matchers::WithinAbs;
 
+TEST_CASE ("Published parameter IDs and AU version hints stay stable", "[compatibility]")
+{
+    DuckProcessor processor;
+    const juce::StringArray expected { "amount", "shape", "rate", "trigger", "threshold", "bypass" };
+    REQUIRE (processor.getParameters().size() == expected.size());
+
+    for (int i = 0; i < expected.size(); ++i)
+    {
+        auto* parameter = dynamic_cast<juce::AudioProcessorParameterWithID*> (processor.getParameters()[i]);
+        REQUIRE (parameter != nullptr);
+        CHECK (parameter->getParameterID() == expected[i]);
+        CHECK (parameter->getVersionHint() == 1);
+    }
+}
+
 namespace
 {
     constexpr double sampleRate = 48000.0;

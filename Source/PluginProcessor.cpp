@@ -219,14 +219,20 @@ void DuckProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBu
 
 void DuckProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    if (auto xml = apvts.copyState().createXml())
+    auto state = apvts.copyState();
+    state.setProperty ("schemaVersion", 1, nullptr);
+    if (auto xml = state.createXml())
         copyXmlToBinary (*xml, destData);
 }
 
 void DuckProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     if (auto xml = getXmlFromBinary (data, sizeInBytes); xml != nullptr && xml->hasTagName (apvts.state.getType()))
-        apvts.replaceState (juce::ValueTree::fromXml (*xml));
+    {
+        auto state = juce::ValueTree::fromXml (*xml);
+        state.removeProperty ("schemaVersion", nullptr);
+        apvts.replaceState (state);
+    }
 }
 
 juce::AudioProcessorEditor* DuckProcessor::createEditor()
